@@ -1,6 +1,7 @@
 /* global _WORKLET */
 import { Easing } from './Easing';
 import NativeReanimated from './NativeReanimated';
+import { runOnJS } from './core';
 
 let IN_STYLE_UPDATER = false;
 
@@ -40,10 +41,21 @@ export function cancelAnimation(sharedValue) {
   sharedValue.value = sharedValue.value; // eslint-disable-line no-self-assign
 }
 
+function callbackDecorator(callback) {
+  if (callback.__worklet) {
+    return callback;
+  }
+  return (isFinished) => {
+    'worklet';
+    runOnJS(callback)(isFinished);
+  };
+}
+
 export function withTiming(toValue, userConfig, callback) {
   'worklet';
   // check toValue
   assertNumber(toValue, 'withTiming');
+  callback = callbackDecorator(callback);
 
   return defineAnimation(toValue, () => {
     'worklet';
@@ -111,6 +123,7 @@ export function withSpring(toValue, userConfig, callback) {
   'worklet';
   // check toValue
   assertNumber(toValue, 'withSpring');
+  callback = callbackDecorator(callback);
 
   return defineAnimation(toValue, () => {
     'worklet';
@@ -230,6 +243,8 @@ export function withSpring(toValue, userConfig, callback) {
 
 export function withDecay(userConfig, callback) {
   'worklet';
+  callback = callbackDecorator(callback);
+
   return defineAnimation(0, () => {
     'worklet';
     const config = {
@@ -419,6 +434,8 @@ export function withRepeat(
   callback
 ) {
   'worklet';
+  callback = callbackDecorator(callback);
+
   return defineAnimation(_nextAnimation, () => {
     'worklet';
 
