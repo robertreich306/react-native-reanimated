@@ -42,7 +42,7 @@ export function cancelAnimation(sharedValue) {
 }
 
 function callbackDecorator(callback) {
-  if (callback.__worklet) {
+  if (!callback || callback.__worklet) {
     return callback;
   }
   return (isFinished) => {
