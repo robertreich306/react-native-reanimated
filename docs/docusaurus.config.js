@@ -13,15 +13,17 @@ module.exports = {
     shortTitle: 'Reanimated',
   },
   themeConfig: {
-    disableDarkMode: true,
+    colorMode: {
+      disableSwitch: false,
+    },
     googleAnalytics: {
-      trackingID: 'UA-41044622-6',
+      trackingslug: 'UA-41044622-6',
       anonymizeIP: true, // Should IPs be anonymized?
     },
 
     navbar: {
       title: 'React Native Reanimated',
-      links: [
+      items: [
         {
           label: 'Versions',
           to: 'docs/about',
@@ -47,7 +49,7 @@ module.exports = {
         // {to: 'blog', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/software-mansion/react-native-reanimated',
-          label: '',
+          label: 'rea',
           position: 'right',
         },
       ],
@@ -127,7 +129,6 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          homePageId: 'about',
           path: 'docs',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.

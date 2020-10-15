@@ -9,10 +9,10 @@
     "deploy": "docusaurus deploy"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.0.0-alpha.61",
-    "@docusaurus/plugin-google-analytics": "^2.0.0-alpha.37",
-    "@docusaurus/plugin-google-gtag": "^2.0.0-alpha.37",
-    "@docusaurus/preset-classic": "^2.0.0-alpha.55",
+    "@docusaurus/core": "^2.0.0-alpha.65",
+    "@docusaurus/plugin-google-analytics": "^2.0.0-alpha.65",
+    "@docusaurus/plugin-google-gtag": "^2.0.0-alpha.65",
+    "@docusaurus/preset-classic": "^2.0.0-alpha.65",
     "classnames": "^2.2.6",
     "gh-pages": "^2.2.0",
     "react": "^16.8.4",
